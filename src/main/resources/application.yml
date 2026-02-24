@@ -1,0 +1,36 @@
+spring:
+  application.name: Keycloak
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+            issuer-uri: http://localhost:8080/realms/Maradga
+            jwk-set-uri: http://localhost:8080/realms/Maradga/protocol/openid-connect/certs
+  datasource:
+    url: jdbc:postgresql://localhost:5432/keycloak_db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # update # create / create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
+    show-sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+
+server:
+  port: 8081
+
+# I'm fetching the following from the DB
+#keycloak:
+  #client:
+    #name: ali-rest-api-1 # Client application name from Keyclock, in my case it is -> ali-rest-api
+    #preferred-username: preferred_username #when extracting the jwt token in www. jwt.io I get "preferred_username": "ali"
