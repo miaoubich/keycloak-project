@@ -1,5 +1,6 @@
 package com.miaoubich.security;
 
+import com.miaoubich.keycloakutil.Constants;
 import com.miaoubich.keycloakutil.KeycloakCommonMethods;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -40,10 +41,8 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
 
     @PostConstruct
     protected void init() {
-        clientName = keycloakCommonMethods.getParamValueByParamName("applicationClientName");
-        preferredUsername = keycloakCommonMethods.getParamValueByParamName("preferredUsername");
-        logger.info("Client Name: " + clientName);
-        logger.info("Preferred Username: " + preferredUsername);
+        clientName = keycloakCommonMethods.getParamValueByParamName(Constants.APPLICATION_CLIENT_NAME);
+        preferredUsername = keycloakCommonMethods.getParamValueByParamName(Constants.PREFERRED_USERNAME);
     }
 
     @Override

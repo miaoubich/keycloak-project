@@ -1,2 +1,3 @@
+.DS_Store
 /mvnw text eol=lf
 *.cmd text eol=crlf
